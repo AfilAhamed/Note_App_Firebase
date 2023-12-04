@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Note App',
       theme: ThemeData(
+        appBarTheme: AppBarTheme(centerTitle: true),
         useMaterial3: false,
       ),
       home: HomeScreen(),
