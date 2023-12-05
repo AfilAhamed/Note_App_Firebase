@@ -123,6 +123,9 @@ class HomeScreen extends StatelessWidget {
               side: BorderSide(color: Colors.white, width: 2)),
           backgroundColor: AppStyles().mainColor,
           onPressed: () {
+            homeProvider.titleController.clear();
+            homeProvider.dateController.clear();
+            homeProvider.descriptionController.clear();
             Navigator.push(
                 context,
                 MaterialPageRoute(

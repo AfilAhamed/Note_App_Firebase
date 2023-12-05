@@ -17,9 +17,6 @@ class CrudController extends ChangeNotifier {
     CrudServices().addNotesToDb(
         titleController.text, dateController.text, descriptionController.text);
     getNotes();
-    titleController.clear();
-    dateController.clear();
-    descriptionController.clear();
 
     notifyListeners();
   }
