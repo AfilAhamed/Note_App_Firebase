@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:note_app/controller/crud_controller.dart';
 import 'package:note_app/firebase_options.dart';
 import 'package:note_app/view/home_screen/home_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,14 +18,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Note App',
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(centerTitle: true),
-        useMaterial3: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CrudController())
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Note App',
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(centerTitle: true),
+          useMaterial3: false,
+        ),
+        home: HomeScreen(),
       ),
-      home: HomeScreen(),
     );
   }
 }
