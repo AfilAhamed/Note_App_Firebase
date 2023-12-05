@@ -4,6 +4,7 @@ import 'package:note_app/controller/crud_controller.dart';
 import 'package:note_app/helpers/styles.dart';
 import 'package:note_app/model/note_model.dart';
 import 'package:note_app/view/add_screen.dart/add_note_screen.dart';
+import 'package:note_app/view/edit_screen.dart/edit_note_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -75,7 +76,13 @@ class HomeScreen extends StatelessWidget {
                               PopupMenuButton(onSelected: (value) {
                                 if (value == 'Delete') {
                                   homeProvider.deleteNotes(data.id);
-                                } else {}
+                                } else {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              EditNoteScreen()));
+                                }
                               }, itemBuilder: (context) {
                                 return [
                                   const PopupMenuItem(
