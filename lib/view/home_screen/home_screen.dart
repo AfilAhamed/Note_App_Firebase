@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:note_app/controller/crud_controller.dart';
 import 'package:note_app/helpers/styles.dart';
 import 'package:note_app/model/note_model.dart';
-import 'package:note_app/view/add_notes_screen.dart/add_screen.dart';
+import 'package:note_app/view/add_screen.dart/add_note_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -53,7 +53,10 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final NoteModel data = homeProvider.noteList[index];
                     return Container(
-                      padding: const EdgeInsets.only(left: 6, bottom: 2),
+                      padding: const EdgeInsets.only(
+                        left: 6,
+                        bottom: 2,
+                      ),
                       margin: const EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.0),
@@ -82,9 +85,6 @@ class HomeScreen extends StatelessWidget {
                                 ];
                               })
                             ],
-                          ),
-                          const SizedBox(
-                            height: 5,
                           ),
                           Text(
                             data.date.toString(),
