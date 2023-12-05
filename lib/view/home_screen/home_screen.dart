@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final NoteModel data = homeProvider.noteList[index];
                     return Container(
-                      padding: const EdgeInsets.only(left: 3),
+                      padding: const EdgeInsets.only(left: 6, bottom: 2),
                       margin: const EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.0),
