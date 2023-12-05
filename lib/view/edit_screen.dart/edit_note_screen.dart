@@ -14,7 +14,7 @@ class EditNoteScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppStyles().mainColor,
-        title: const Text('Add Notes'),
+        title: const Text('Edit Notes'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
