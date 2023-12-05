@@ -4,7 +4,17 @@ import 'package:note_app/helpers/styles.dart';
 import 'package:provider/provider.dart';
 
 class EditNoteScreen extends StatelessWidget {
-  const EditNoteScreen({super.key});
+  const EditNoteScreen(
+      {super.key,
+      required this.name,
+      required this.date,
+      required this.description,
+      required this.id});
+
+  final String? name;
+  final String? date;
+  final String? description;
+  final String? id;
 
   @override
   Widget build(BuildContext context) {
