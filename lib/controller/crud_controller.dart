@@ -31,8 +31,16 @@ class CrudController extends ChangeNotifier {
   }
 
   //delete note function
-  deleteNotes(id) {
+  void deleteNotes(id) {
     CrudServices().deleteNotesFromDb(id);
+    getNotes();
+    notifyListeners();
+  }
+  //update
+
+  void update(id) {
+    CrudServices().updateNotes(id, titleController.text, dateController.text,
+        descriptionController.text);
     getNotes();
     notifyListeners();
   }

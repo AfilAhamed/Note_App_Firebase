@@ -80,8 +80,11 @@ class HomeScreen extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              EditNoteScreen()));
+                                          builder: (context) => EditNoteScreen(
+                                              name: data.title,
+                                              date: data.date,
+                                              description: data.description,
+                                              id: data.id)));
                                 }
                               }, itemBuilder: (context) {
                                 return [

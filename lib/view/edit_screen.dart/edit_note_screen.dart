@@ -19,6 +19,10 @@ class EditNoteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final editProvider = Provider.of<CrudController>(context);
+    editProvider.titleController.text = name!;
+    editProvider.dateController.text = date!;
+    editProvider.descriptionController.text = description!;
+
     return Scaffold(
       backgroundColor: AppStyles().mainColor,
       appBar: AppBar(
@@ -85,7 +89,7 @@ class EditNoteScreen extends StatelessWidget {
                       side: BorderSide(color: Colors.white, width: 2)),
                 ),
                 onPressed: () {
-                  editProvider.addNotes();
+                  editProvider.update(id);
                   Navigator.pop(context);
                 },
                 child: const Text(

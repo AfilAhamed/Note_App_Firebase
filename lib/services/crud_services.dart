@@ -28,4 +28,17 @@ class CrudServices {
   void deleteNotesFromDb(id) {
     firebaseDatas.doc(id).delete();
   }
+
+  //update notes
+
+  void updateNotes(id, noteTitle, noteDate, noteDescription) {
+    final data = NoteModel(
+            id: id,
+            title: noteTitle,
+            date: noteDate,
+            description: noteDescription)
+        .toJson();
+
+    firebaseDatas.doc(id).update(data);
+  }
 }
