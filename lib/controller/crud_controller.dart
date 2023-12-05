@@ -12,6 +12,7 @@ class CrudController extends ChangeNotifier {
 
   List<NoteModel> noteList = [];
 
+  // add note function
   void addNotes() {
     CrudServices().addNotesToDb(
         titleController.text, dateController.text, descriptionController.text);
@@ -23,11 +24,13 @@ class CrudController extends ChangeNotifier {
     notifyListeners();
   }
 
+  //get note function
   Future<void> getNotes() async {
     noteList = await CrudServices().fetchNotes();
     notifyListeners();
   }
 
+  //delete note function
   deleteNotes(id) {
     CrudServices().deleteNotesFromDb(id);
     getNotes();
