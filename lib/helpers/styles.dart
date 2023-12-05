@@ -8,14 +8,14 @@ class AppStyles {
 
   //cardsColor
   final List<Color> cardsColor = [
-    Colors.white,
-    Colors.red.shade100,
-    Colors.pink.shade100,
-    Colors.orange.shade100,
-    Colors.yellow.shade100,
-    Colors.green.shade100,
     Colors.blue.shade100,
+    Color.fromARGB(255, 137, 243, 190),
+    Colors.pink.shade100,
+    Colors.yellow.shade100,
     Colors.blueGrey.shade100,
+    Color.fromARGB(255, 91, 144, 251),
+    Color.fromARGB(255, 150, 105, 185),
+    Color.fromARGB(255, 254, 199, 116),
   ];
 
   //textStyle

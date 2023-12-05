@@ -37,12 +37,21 @@ class EditNoteScreen extends StatelessWidget {
             controller: editProvider.titleController,
             style: const TextStyle(
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-            decoration: const InputDecoration(
-                focusedBorder: OutlineInputBorder(
+            decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    editProvider.titleController.clear();
+                  },
+                  icon: const Icon(
+                    Icons.clear,
+                    color: Colors.white,
+                  ),
+                ),
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                hintStyle: TextStyle(color: Colors.grey),
+                hintStyle: const TextStyle(color: Colors.grey),
                 hintText: 'Title'),
           ),
           const SizedBox(
@@ -52,12 +61,21 @@ class EditNoteScreen extends StatelessWidget {
             controller: editProvider.dateController,
             style: const TextStyle(
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-            decoration: const InputDecoration(
-                focusedBorder: OutlineInputBorder(
+            decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    editProvider.dateController.clear();
+                  },
+                  icon: const Icon(
+                    Icons.clear,
+                    color: Colors.white,
+                  ),
+                ),
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                hintStyle: TextStyle(color: Colors.grey),
+                hintStyle: const TextStyle(color: Colors.grey),
                 hintText: 'Date'),
           ),
           const SizedBox(
@@ -66,14 +84,23 @@ class EditNoteScreen extends StatelessWidget {
           TextFormField(
             controller: editProvider.descriptionController,
             style: const TextStyle(
-                fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
             maxLines: 6,
-            decoration: const InputDecoration(
-                focusedBorder: OutlineInputBorder(
+            decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    editProvider.descriptionController.clear();
+                  },
+                  icon: const Icon(
+                    Icons.clear,
+                    color: Colors.white,
+                  ),
+                ),
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                hintStyle: TextStyle(color: Colors.grey),
+                hintStyle: const TextStyle(color: Colors.grey),
                 hintText: 'Description'),
           ),
           const SizedBox(

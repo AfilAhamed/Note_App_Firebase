@@ -23,12 +23,21 @@ class AddNotesScreen extends StatelessWidget {
             controller: addUserProvider.titleController,
             style: const TextStyle(
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-            decoration: const InputDecoration(
-                focusedBorder: OutlineInputBorder(
+            decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    addUserProvider.titleController.clear();
+                  },
+                  icon: const Icon(
+                    Icons.clear,
+                    color: Colors.white,
+                  ),
+                ),
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                hintStyle: TextStyle(color: Colors.grey),
+                hintStyle: const TextStyle(color: Colors.grey),
                 hintText: 'Title'),
           ),
           const SizedBox(
@@ -38,12 +47,21 @@ class AddNotesScreen extends StatelessWidget {
             controller: addUserProvider.dateController,
             style: const TextStyle(
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-            decoration: const InputDecoration(
-                focusedBorder: OutlineInputBorder(
+            decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    addUserProvider.dateController.clear();
+                  },
+                  icon: const Icon(
+                    Icons.clear,
+                    color: Colors.white,
+                  ),
+                ),
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                hintStyle: TextStyle(color: Colors.grey),
+                hintStyle: const TextStyle(color: Colors.grey),
                 hintText: 'Date'),
           ),
           const SizedBox(
@@ -52,14 +70,23 @@ class AddNotesScreen extends StatelessWidget {
           TextFormField(
             controller: addUserProvider.descriptionController,
             style: const TextStyle(
-                fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
             maxLines: 6,
-            decoration: const InputDecoration(
-                focusedBorder: OutlineInputBorder(
+            decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    addUserProvider.descriptionController.clear();
+                  },
+                  icon: const Icon(
+                    Icons.clear,
+                    color: Colors.white,
+                  ),
+                ),
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2)),
-                hintStyle: TextStyle(color: Colors.grey),
+                hintStyle: const TextStyle(color: Colors.grey),
                 hintText: 'Description'),
           ),
           const SizedBox(

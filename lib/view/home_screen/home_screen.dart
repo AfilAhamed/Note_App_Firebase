@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:note_app/controller/crud_controller.dart';
+import 'package:note_app/helpers/date.dart';
 import 'package:note_app/helpers/styles.dart';
 import 'package:note_app/model/note_model.dart';
 import 'package:note_app/view/add_screen.dart/add_note_screen.dart';
+import 'package:note_app/view/details_screen/details_screen.dart';
 import 'package:note_app/view/edit_screen.dart/edit_note_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -53,63 +55,78 @@ class HomeScreen extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) {
                     final NoteModel data = homeProvider.noteList[index];
-                    return Container(
-                      padding: const EdgeInsets.only(
-                        left: 6,
-                        bottom: 2,
-                      ),
-                      margin: const EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.0),
-                          color: AppStyles().cardsColor[
-                              index % AppStyles().cardsColor.length]),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                data.title.toString(),
-                                style: AppStyles().cardTitle,
-                              ),
-                              PopupMenuButton(onSelected: (value) {
-                                if (value == 'Delete') {
-                                  homeProvider.deleteNotes(data.id);
-                                } else {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => EditNoteScreen(
-                                              name: data.title,
-                                              date: data.date,
-                                              description: data.description,
-                                              id: data.id)));
-                                }
-                              }, itemBuilder: (context) {
-                                return [
-                                  const PopupMenuItem(
-                                      value: 'Edit', child: Text('Edit')),
-                                  const PopupMenuItem(
-                                      value: 'Delete', child: Text('Delete'))
-                                ];
-                              })
-                            ],
-                          ),
-                          Text(
-                            data.date.toString(),
-                            style: AppStyles().cardDate,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            maxLines: 5,
-                            overflow: TextOverflow.ellipsis,
-                            data.description.toString(),
-                            style: AppStyles().cardDescription,
-                          ),
-                        ],
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (contetx) => DetailsScreeen(
+                                      color: AppStyles().cardsColor[index],
+                                      title: data.title,
+                                      date: data.date,
+                                      description: data.description,
+                                    )));
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.only(
+                          left: 6,
+                          bottom: 2,
+                        ),
+                        margin: const EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            color: AppStyles().cardsColor[
+                                index % AppStyles().cardsColor.length]),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  data.title.toString(),
+                                  style: AppStyles().cardTitle,
+                                ),
+                                PopupMenuButton(onSelected: (value) {
+                                  if (value == 'Delete') {
+                                    homeProvider.deleteNotes(data.id);
+                                  } else {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                EditNoteScreen(
+                                                    name: data.title,
+                                                    date: data.date,
+                                                    description:
+                                                        data.description,
+                                                    id: data.id)));
+                                  }
+                                }, itemBuilder: (context) {
+                                  return [
+                                    const PopupMenuItem(
+                                        value: 'Edit', child: Text('Edit')),
+                                    const PopupMenuItem(
+                                        value: 'Delete', child: Text('Delete'))
+                                  ];
+                                })
+                              ],
+                            ),
+                            Text(
+                              data.date.toString(),
+                              style: AppStyles().cardDate,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              maxLines: 5,
+                              overflow: TextOverflow.ellipsis,
+                              data.description.toString(),
+                              style: AppStyles().cardDescription,
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }),
@@ -123,8 +140,8 @@ class HomeScreen extends StatelessWidget {
               side: BorderSide(color: Colors.white, width: 2)),
           backgroundColor: AppStyles().mainColor,
           onPressed: () {
+            homeProvider.dateController.text = formattedDate;
             homeProvider.titleController.clear();
-            homeProvider.dateController.clear();
             homeProvider.descriptionController.clear();
             Navigator.push(
                 context,
