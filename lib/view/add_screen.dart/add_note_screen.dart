@@ -46,6 +46,8 @@ class AddNotesScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
+                  border: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 2)),
                   focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 2)),
                   enabledBorder: const OutlineInputBorder(
@@ -79,6 +81,8 @@ class AddNotesScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
+                  border: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 2)),
                   focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 2)),
                   enabledBorder: const OutlineInputBorder(
@@ -113,6 +117,8 @@ class AddNotesScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
+                  border: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 2)),
                   focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 2)),
                   enabledBorder: const OutlineInputBorder(
