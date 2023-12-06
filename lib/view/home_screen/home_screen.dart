@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:note_app/controller/crud_controller.dart';
 import 'package:note_app/helpers/date.dart';
 import 'package:note_app/helpers/styles.dart';
@@ -22,119 +23,143 @@ class HomeScreen extends StatelessWidget {
         title: const Text('FireNotes'),
         backgroundColor: AppStyles().mainColor,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 15,
-              top: 20,
-            ),
-            child: Text(
-              'Your Recent Notes',
-              style: GoogleFonts.roboto(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 3),
-              child: GridView.builder(
-                  itemCount: homeProvider.noteList.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    // crossAxisSpacing: 0.0,
-                    // mainAxisSpacing: 0.0,
-                    // childAspectRatio: 0.9
+      body: homeProvider.noteList.isEmpty
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 25,
                   ),
-                  itemBuilder: (context, index) {
-                    final NoteModel data = homeProvider.noteList[index];
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (contetx) => DetailsScreeen(
-                                      color: AppStyles().cardsColor[index],
-                                      title: data.title,
-                                      date: data.date,
-                                      description: data.description,
-                                    )));
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.only(
-                          left: 6,
-                          bottom: 2,
+                  Lottie.asset('lib/assets/note-lottie.json'),
+                  const Text(
+                    'Empty Notes',
+                    style: TextStyle(
+                        fontSize: 27,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            )
+          : Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 15,
+                    top: 20,
+                  ),
+                  child: Text(
+                    'Your Recent Notes',
+                    style: GoogleFonts.roboto(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 3),
+                    child: GridView.builder(
+                        itemCount: homeProvider.noteList.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          // crossAxisSpacing: 0.0,
+                          // mainAxisSpacing: 0.0,
+                          // childAspectRatio: 0.9
                         ),
-                        margin: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                            color: AppStyles().cardsColor[
-                                index % AppStyles().cardsColor.length]),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  data.title.toString(),
-                                  style: AppStyles().cardTitle,
-                                ),
-                                PopupMenuButton(onSelected: (value) {
-                                  if (value == 'Delete') {
-                                    homeProvider
-                                        .deleteNotes(data.id.toString());
-                                  } else {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                EditNoteScreen(
-                                                    name: data.title,
-                                                    date: data.date,
-                                                    description:
-                                                        data.description,
-                                                    id: data.id)));
-                                  }
-                                }, itemBuilder: (context) {
-                                  return [
-                                    const PopupMenuItem(
-                                        value: 'Edit', child: Text('Edit')),
-                                    const PopupMenuItem(
-                                        value: 'Delete', child: Text('Delete'))
-                                  ];
-                                })
-                              ],
+                        itemBuilder: (context, index) {
+                          final NoteModel data = homeProvider.noteList[index];
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (contetx) => DetailsScreeen(
+                                            color:
+                                                AppStyles().cardsColor[index],
+                                            title: data.title,
+                                            date: data.date,
+                                            description: data.description,
+                                          )));
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                left: 6,
+                                bottom: 2,
+                              ),
+                              margin: const EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  color: AppStyles().cardsColor[
+                                      index % AppStyles().cardsColor.length]),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        data.title.toString(),
+                                        style: AppStyles().cardTitle,
+                                      ),
+                                      PopupMenuButton(onSelected: (value) {
+                                        if (value == 'Delete') {
+                                          homeProvider
+                                              .deleteNotes(data.id.toString());
+                                        } else {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      EditNoteScreen(
+                                                          name: data.title,
+                                                          date: data.date,
+                                                          description:
+                                                              data.description,
+                                                          id: data.id)));
+                                        }
+                                      }, itemBuilder: (context) {
+                                        return [
+                                          const PopupMenuItem(
+                                              value: 'Edit',
+                                              child: Text('Edit')),
+                                          const PopupMenuItem(
+                                              value: 'Delete',
+                                              child: Text('Delete'))
+                                        ];
+                                      })
+                                    ],
+                                  ),
+                                  Text(
+                                    data.date.toString(),
+                                    style: AppStyles().cardDate,
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    maxLines: 5,
+                                    overflow: TextOverflow.ellipsis,
+                                    data.description.toString(),
+                                    style: AppStyles().cardDescription,
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text(
-                              data.date.toString(),
-                              style: AppStyles().cardDate,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              maxLines: 5,
-                              overflow: TextOverflow.ellipsis,
-                              data.description.toString(),
-                              style: AppStyles().cardDescription,
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
+                          );
+                        }),
+                  ),
+                )
+              ],
             ),
-          )
-        ],
-      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton.extended(
           shape: const StadiumBorder(
