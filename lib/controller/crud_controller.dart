@@ -6,6 +6,7 @@ class CrudController extends ChangeNotifier {
   CrudController() {
     getNotes();
   }
+
   final TextEditingController titleController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
@@ -27,14 +28,14 @@ class CrudController extends ChangeNotifier {
   }
 
   //delete note function
-  void deleteNotes(id) {
+  void deleteNotes(String id) {
     CrudServices().deleteNotesFromDb(id);
     getNotes();
     notifyListeners();
   }
-  //update
 
-  void update(id) {
+  //update
+  void update(String id) {
     CrudServices().updateNotes(id, titleController.text, dateController.text,
         descriptionController.text);
     getNotes();

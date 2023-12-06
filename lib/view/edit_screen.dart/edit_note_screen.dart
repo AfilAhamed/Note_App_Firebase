@@ -116,7 +116,7 @@ class EditNoteScreen extends StatelessWidget {
                       side: BorderSide(color: Colors.white, width: 2)),
                 ),
                 onPressed: () {
-                  editProvider.update(id);
+                  editProvider.update(id.toString());
                   Navigator.pop(context);
                 },
                 child: const Text(

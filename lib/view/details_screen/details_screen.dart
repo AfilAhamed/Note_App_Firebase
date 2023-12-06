@@ -25,8 +25,27 @@ class DetailsScreeen extends StatelessWidget {
           backgroundColor: color,
         ),
         body: Center(
-          child: Column(
-            children: [Text(title!), Text(date!), Text(description!)],
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  title!,
+                  style: const TextStyle(fontSize: 30),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Text(date!, style: const TextStyle(fontSize: 22)),
+                const SizedBox(
+                  height: 30,
+                ),
+                Text(description!, style: const TextStyle(fontSize: 26))
+              ],
+            ),
           ),
         ));
   }

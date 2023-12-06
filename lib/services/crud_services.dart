@@ -6,7 +6,6 @@ class CrudServices {
       FirebaseFirestore.instance.collection('Note');
 
   //add to databse
-
   void addNotesToDb(String addTitle, String addDate, String addDescription) {
     final data = NoteModel(
             id: '', title: addTitle, date: addDate, description: addDescription)
@@ -24,14 +23,13 @@ class CrudServices {
   }
 
   //delete notes from Databse
-
-  void deleteNotesFromDb(id) {
+  void deleteNotesFromDb(String id) {
     firebaseDatas.doc(id).delete();
   }
 
   //update notes
-
-  void updateNotes(id, noteTitle, noteDate, noteDescription) {
+  void updateNotes(
+      String id, String noteTitle, String noteDate, String noteDescription) {
     final data = NoteModel(
             id: id,
             title: noteTitle,

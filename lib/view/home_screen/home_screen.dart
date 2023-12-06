@@ -89,7 +89,8 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 PopupMenuButton(onSelected: (value) {
                                   if (value == 'Delete') {
-                                    homeProvider.deleteNotes(data.id);
+                                    homeProvider
+                                        .deleteNotes(data.id.toString());
                                   } else {
                                     Navigator.push(
                                         context,
