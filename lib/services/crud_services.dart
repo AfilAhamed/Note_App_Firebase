@@ -6,10 +6,8 @@ class CrudServices {
       FirebaseFirestore.instance.collection('Note');
 
   //add to databse
-  void addNotesToDb(String addTitle, String addDate, String addDescription) {
-    final data = NoteModel(
-            id: '', title: addTitle, date: addDate, description: addDescription)
-        .toJson();
+  void addNotesToDb(NoteModel dataModel) {
+    final data = dataModel.toJson();
     firebaseDatas.add(data);
   }
 
@@ -28,15 +26,7 @@ class CrudServices {
   }
 
   //update notes
-  void updateNotes(
-      String id, String noteTitle, String noteDate, String noteDescription) {
-    final data = NoteModel(
-            id: id,
-            title: noteTitle,
-            date: noteDate,
-            description: noteDescription)
-        .toJson();
-
-    firebaseDatas.doc(id).update(data);
+  void updateNotes(NoteModel dataModel, id) {
+    firebaseDatas.doc(id).update(dataModel.toJson());
   }
 }

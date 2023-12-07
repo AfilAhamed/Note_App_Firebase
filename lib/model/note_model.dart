@@ -4,7 +4,7 @@ class NoteModel {
   String? date;
   String? description;
   NoteModel({
-    required this.id,
+    this.id,
     required this.title,
     required this.date,
     required this.description,

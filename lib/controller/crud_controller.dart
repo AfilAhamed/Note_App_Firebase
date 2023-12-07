@@ -15,8 +15,12 @@ class CrudController extends ChangeNotifier {
 
   // add note function
   void addNotes() {
-    CrudServices().addNotesToDb(
-        titleController.text, dateController.text, descriptionController.text);
+    final models = NoteModel(
+      title: titleController.text,
+      date: dateController.text,
+      description: descriptionController.text,
+    );
+    CrudServices().addNotesToDb(models);
     getNotes();
     notifyListeners();
   }
@@ -36,8 +40,12 @@ class CrudController extends ChangeNotifier {
 
   //update
   void update(String id) {
-    CrudServices().updateNotes(id, titleController.text, dateController.text,
-        descriptionController.text);
+    final model = NoteModel(
+      title: titleController.text,
+      date: dateController.text,
+      description: descriptionController.text,
+    );
+    CrudServices().updateNotes(model, id);
     getNotes();
     notifyListeners();
   }

@@ -155,6 +155,7 @@ class EditNoteScreen extends StatelessWidget {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       editProvider.update(id.toString());
+
                       Navigator.pop(context);
                     }
                   },
