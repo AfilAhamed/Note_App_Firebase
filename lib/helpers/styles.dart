@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppStyles {
-  //background Color
+  //backgroundColor
   Color bgColor = const Color(0xFFe2e2fe);
   Color mainColor = const Color(0xFF000633);
   Color accentColor = const Color(0xFF0065FF);
