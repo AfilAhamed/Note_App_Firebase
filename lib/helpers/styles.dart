@@ -7,7 +7,7 @@ class AppStyles {
   Color mainColor = const Color(0xFF000633);
   Color accentColor = const Color(0xFF0065FF);
 
-  //cardsColor
+  //cardColor
   final List<Color> cardsColor = [
     Colors.blue.shade100,
     const Color.fromARGB(255, 137, 243, 190),
