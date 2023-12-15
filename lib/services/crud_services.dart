@@ -5,7 +5,7 @@ class CrudServices {
   final CollectionReference firebaseDatas =
       FirebaseFirestore.instance.collection('Note');
 
-  //add to databse
+  //add notes to databse
   void addNotesToDb(NoteModel dataModel) {
     final data = dataModel.toJson();
     firebaseDatas.add(data);
